@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<name>QuestionBank :: WebApp</name>
+  <parent>
+	<groupId>com.qb</groupId>
+	<artifactId>questionbank</artifactId>
+    <version>1.0</version>
+  </parent>
+  <artifactId>com-qb-webApp</artifactId>
+	<version>1.0</version>
+	<packaging>war</packaging>
+	<build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>test</phase>
+                        <configuration>
+                            <tasks>
+                                <copy todir = "${pom.basedir}/target/${pom.artifactId}-${pom.version}/WEB-INF/lib">
+                                    <fileset dir = "${pom.basedir}/src/main/libFiles">
+                                        <include name = "*"/>
+                                    </fileset>
+                                </copy>
+                            </tasks>
+                        </configuration>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+	<dependencies>
+		<dependency>
+			<groupId>com.qb</groupId>
+			<artifactId>com-qb-component-impl</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.qb</groupId>
+			<artifactId>com-qb-services-impl</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.qb</groupId>
+			<artifactId>com-qb-rest-impl</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>javassist</groupId>
+			<artifactId>javassist</artifactId>
+			<version>3.8.0.GA</version>
+			<type>jar</type>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.transaction</groupId>
+	        <artifactId>jta</artifactId>
+		    <version>1.1</version>
+		</dependency>
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>jstl</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.1.2</version>
+		</dependency>
+		<dependency>
+			<groupId>taglibs</groupId>
+			<artifactId>standard</artifactId>
+			<version>1.1.2</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-beanutils</groupId>
+			<artifactId>commons-beanutils</artifactId>
+			<version>20030211.134440</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-digester</groupId>
+			<artifactId>commons-digester</artifactId>
+			<version>2.1</version>
+		</dependency>
+	</dependencies>
+</project>

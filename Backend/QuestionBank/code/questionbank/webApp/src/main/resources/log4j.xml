@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+	
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/" debug="true">
+
+	<appender name="SimpleLogger" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="Threshold" value="debug"/>
+		<param name="ImmediateFlush" value="true"/>
+		<param name="Append" value="true"/>
+		<param name="File" value="C:/apache-tomcat-7.0.37/webapps/PayOnTime/logs/payOnTime.log"/>
+		<param name="DatePattern" value="'.'yyyy-MM-dd"/>
+		<layout class="com.pot.core.logger.impl.MyPatternLayout">
+			<param name="ConversionPattern" value="[ %d | %-5p][ %-32u ][THREAD ID=%t] %F : %L -> %m%n"/>
+		</layout>
+	</appender>
+
+<!--
+	<appender name="JDBCLogger" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="Threshold" value="Debug"/>
+		<param name="ImmediateFlush" value="true"/>
+		<param name="Append" value="true"/>
+		<param name="File" value="%[LoggerPath]LoggerJDBCFile%"/>
+		<param name="DatePattern" value="'.'yyyy-MM-dd"/>
+		<layout class="fx.core.logger.impl.MyPatternLayout">
+			<param name="ConversionPattern" value="[ %d | %-5p %-35u ] %F : %L > %m%n"/>
+		</layout>
+	</appender>
+-->
+	<logger name="fxLogger" additivity="false">
+         <level value="info"/>
+         <appender-ref ref="SimpleLogger"/>
+    </logger>
+	<!--
+	<logger name="fxJDBCLogger" additivity="false">
+         <level value="error"/>
+         <appender-ref ref="JDBCLogger"/>
+    </logger>
+   -->
+	<root>
+		<priority value ="info" />
+	</root>
+	
+</log4j:configuration>
